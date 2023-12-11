@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 export const autRequerida = (req, res, next) => {
   //extraemos el token
   const { token } = req.cookies;
+  console.log(token);
 
   if (!token) return res.status(401).json({ message: "Acceso denegado" });
 
