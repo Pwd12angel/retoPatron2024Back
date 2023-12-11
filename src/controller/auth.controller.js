@@ -28,6 +28,7 @@ export const registrar = async (req, res) => {
 
     const token = await crearAccesoToken({ id: dataFront._id }); //pasamos los parametros que queremos guardar
 
+    console.log(token);
     res.cookie("token", token); //guardamos en una cookie
     // res.json({
     //   message: "Usuario creado ",
