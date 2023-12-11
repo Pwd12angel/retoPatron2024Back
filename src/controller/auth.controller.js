@@ -33,7 +33,7 @@ export const registrar = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      SameSite: "None",
+      SameSite: None,
       secure: false,
     });
     // res.json({
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      SameSite: "None",
+      SameSite: None,
       secure: false,
     });
     // res.cookie("token", token); //guardamos en una cookie
