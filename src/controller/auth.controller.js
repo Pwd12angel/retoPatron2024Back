@@ -31,11 +31,7 @@ export const registrar = async (req, res) => {
     console.log(token);
     // res.cookie("token", token); //guardamos en una cookie
 
-    res.cookie("token", token, {
-      httpOnly: false,
-      sameSite: "None",
-      secure: true,
-    });
+    res.cookie("token", token);
     // res.json({
     //   message: "Usuario creado ",
     // });
@@ -77,11 +73,7 @@ export const login = async (req, res) => {
 
     const token = await crearAccesoToken({ id: nEconsulta._id }); //tomamos el id del usuario y creamos el token
 
-    res.cookie("token", token, {
-      httpOnly: false,
-      sameSite: "None",
-      secure: true,
-    });
+    res.cookie("token", token);
     // res.cookie("token", token); //guardamos en una cookie
     // res.json({
     //   message: "Usuario creado ",
