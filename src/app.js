@@ -10,12 +10,12 @@ const app = express();
 app.use(cookieParser()); //le permite a express a entender las cookies
 
 conectarDB();
-app.use(
-  cors({
-    origin: "http://localhost:5173", //especificamos el puerto que se puede comunicar solamente
-    credentials: true,
-  })
-);
+app.use(cors());
+
+// {
+//   origin: "http://localhost:5173", //especificamos el puerto que se puede comunicar solamente
+//   credentials: true,
+// }
 app.use(morgan("dev")); //nos mostrara un mensaje ecorto por consola
 app.use(express.json()); //le permitira a express entender los json del front
 
