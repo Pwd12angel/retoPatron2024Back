@@ -5,13 +5,19 @@ import authRoutes from "./routes/auth.routes.js"; //importamos las rutas
 import cuestionario from "./routes/cuestionario.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors"; //nos permite lidear con los cors
-import res from "express/lib/response.js";
 
 const app = express();
+
+const corsOptions = {
+  origin: "https://setylsa.guiatusemociones.com",
+  credentials: true,
+};
+
 app.use(cookieParser()); //le permite a express a entender las cookies
 
 conectarDB();
-app.use(cors());
+app.use(cors(corsOptions));
+// app.use(cors());
 
 // {
 //   origin: "http://localhost:5173", //especificamos el puerto que se puede comunicar solamente
@@ -22,9 +28,5 @@ app.use(express.json()); //le permitira a express entender los json del front
 
 app.use("/api", authRoutes);
 app.use("/api", cuestionario);
-
-app.get("/", (req, res) => {
-  res.status(200).send("OK"); // Envía un estado 200 y un mensaje 'OK'
-});
 
 export default app;
