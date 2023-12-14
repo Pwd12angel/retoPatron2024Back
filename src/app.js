@@ -8,15 +8,10 @@ import cors from "cors"; //nos permite lidear con los cors
 
 const app = express();
 
-const corsOptions = {
-  origin: "https://setylsa.guiatusemociones.com",
-  credentials: true,
-};
-
 app.use(cookieParser()); //le permite a express a entender las cookies
 
 conectarDB();
-app.use(cors(corsOptions));
+app.use(cors());
 // app.use(cors());
 
 // {
