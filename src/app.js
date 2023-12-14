@@ -11,7 +11,13 @@ const app = express();
 app.use(cookieParser()); //le permite a express a entender las cookies
 
 conectarDB();
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", //especificamos el puerto que se puede comunicar solamente
+    credentials: true,
+  })
+);
+
 // app.use(cors());
 
 // {
@@ -20,26 +26,7 @@ app.use(cors());
 // }
 app.use(morgan("dev")); //nos mostrara un mensaje ecorto por consola
 app.use(express.json()); //le permitira a express entender los json del front
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type,Authorization ,Accept"
-  );
-  res.setHeader("Access-Control-Allow-Origin", ["*"]);
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Expose-Headers", "Authorization");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type, Authorization"
-  );
 
-  console.log(req.header("Authorization"));
-  next();
-});
 app.use("/api", authRoutes);
 app.use("/api", cuestionario);
 
