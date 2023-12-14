@@ -13,7 +13,7 @@ app.use(cookieParser()); //le permite a express a entender las cookies
 conectarDB();
 app.use(
   cors({
-    origin: "http://localhost:5173", //especificamos el puerto que se puede comunicar solamente
+    origin: "https://setylsa.guiatusemociones.com", //especificamos el puerto que se puede comunicar solamente
     credentials: true,
   })
 );
